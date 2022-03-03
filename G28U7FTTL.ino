@@ -1,8 +1,13 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
+
 /*
  * Cambiar en Softwareserial.h el buffer a 128 bytes
 */
+
+#if _SS_MAX_RX_BUFF != 128
+#error "LEEM ERROR: No esta definido el buffer del SofwareSerial.h en 128 bytes. Hablar con Carlos o Andres para solucionar problema"
+#endif
 
 // Módulo G28U7FTTL
 const int TX_GPS = 4;
