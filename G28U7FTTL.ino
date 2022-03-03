@@ -1,5 +1,8 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
+/*
+ * Cambiar en Softwareserial.h el buffer a 128 bytes
+*/
 
 // Módulo G28U7FTTL
 const int TX_GPS = 4;
@@ -18,6 +21,7 @@ SoftwareSerial ss(TX_GPS, RX_GPS);
 
 void setup() {
   Serial.begin(9600);
+  Serial.println(_SS_MAX_RX_BUFF);
   ss.begin(GPSBaud);
   ss.print("$PUBX,40,GLL,0,0,0,0*5C\r\n");
   ss.print("$PUBX,40,ZDA,0,0,0,0*44\r\n");
@@ -65,7 +69,7 @@ void loop() {
 
   gps_read();
 
-  //delay(50);
+  delay(3000);
 
 }
 
