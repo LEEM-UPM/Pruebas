@@ -1,6 +1,6 @@
 #include <Wire.h>
 
-int ADXL345 = 0x53; // Direccion I2C
+const int ADXL345 = 0x53; // Direccion I2C
 float X_out, Y_out, Z_out;
 
 // Offset a calibrar por cada acelerometro
