@@ -10,6 +10,8 @@ float X_out, Y_out, Z_out;
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
+  
   ADXL345_16g_init();
 }
 
@@ -32,9 +34,13 @@ void ADXL345_16g_read_acc() {
   Z_out = Z_out / 32 - OFFSET_Z;
 }
 
-void ADXL345_16g_init() {
-  Wire.begin();
-
+boolean ADXL345_16g_init() {
+  
+  Wire.beginTransmission(ADXL345);
+  if (Wire.endTransmission() == 2) {
+    return 0;
+  }
+  
   // Inicio de la comunicación
   Wire.beginTransmission(ADXL345);
   Wire.write(0x2D);
@@ -47,4 +53,6 @@ void ADXL345_16g_init() {
   Wire.write(0x31);
   Wire.write(B00000011);
   Wire.endTransmission();
+  
+  return 1;
 }
