@@ -37,7 +37,7 @@ void setup() {
   ss.print("$PUBX,40,GSA,0,0,0,0*4E\r\n");
   ss.print("$PUBX,40,RMC,0,0,0,0*47\r\n");
   
-  // Congiguracion a 10Hz
+  // Congiguracion a 10Hz (No funciona correctamente)
   ss.print("\xB5\x62\x06\x08\x06\x00\x64\x00\x01\x00\x01\x00\x7A\x12\xB5\x62\x06\x08\x00\x00\x0E\x30");
 
 
